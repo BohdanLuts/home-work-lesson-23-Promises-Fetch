@@ -95,32 +95,23 @@ function renderWeather(weather) {
   }
 
   function colorBeauforScale(calcBeauforScale) {
-    let color = null;
-    if (calcBeauforScale === 1) {
-      color = "#aef1f9";
-    } else if (calcBeauforScale === 2) {
-      color = "#96f7dc";
-    } else if (calcBeauforScale === 3) {
-      color = "#96f7b4";
-    } else if (calcBeauforScale === 4) {
-      color = "#6ff46f";
-    } else if (calcBeauforScale === 5) {
-      color = "#73ed12";
-    } else if (calcBeauforScale === 6) {
-      color = "#a4ed12";
-    } else if (calcBeauforScale === 7) {
-      color = "#daed12";
-    } else if (calcBeauforScale === 8) {
-      color = "#edc212";
-    } else if (calcBeauforScale === 9) {
-      color = "#ed8f12";
-    } else if (calcBeauforScale === 10) {
-      color = "#ed6312";
-    } else if (calcBeauforScale === 11) {
-      color = "#ed2912";
-    } else if (calcBeauforScale >= 12) {
-      color = "#d5102d";
-    }
+    const beauforScaleColor = {
+      0: "#fff",
+      1: "#aef1f9",
+      2: "#96f7dc",
+      3: "#96f7b4",
+      4: "#6ff46f",
+      5: "#73ed12",
+      6: "#a4ed12",
+      7: "#daed12",
+      8: "#edc212",
+      9: "#ed8f12",
+      10: "#ed6312",
+      11: "#ed2912",
+      12: "#d5102d",
+    };
+
+    let color = beauforScaleColor[calcBeauforScale];
     return color;
   }
 
