@@ -14,6 +14,7 @@ function renderWeather(weather) {
   console.log(weather.daily.windgusts_10m_max);
 
   // Input time in table
+
   const dayFirst = document.querySelector(".day1");
   const dayFirstEl = document.createElement("p");
   dayFirst.append(dayFirstEl);
@@ -94,63 +95,35 @@ function renderWeather(weather) {
     return calc;
   }
 
-  function colorBeauforScale(calcBeauforScale) {
-    const beauforScaleColor = {
-      0: "#fff",
-      1: "#aef1f9",
-      2: "#96f7dc",
-      3: "#96f7b4",
-      4: "#6ff46f",
-      5: "#73ed12",
-      6: "#a4ed12",
-      7: "#daed12",
-      8: "#edc212",
-      9: "#ed8f12",
-      10: "#ed6312",
-      11: "#ed2912",
-      12: "#d5102d",
-    };
+  const beauforScaleColor = {
+    0: "#fff",
+    1: "#aef1f9",
+    2: "#96f7dc",
+    3: "#96f7b4",
+    4: "#6ff46f",
+    5: "#73ed12",
+    6: "#a4ed12",
+    7: "#daed12",
+    8: "#edc212",
+    9: "#ed8f12",
+    10: "#ed6312",
+    11: "#ed2912",
+    12: "#d5102d",
+  };
 
-    let color = beauforScaleColor[calcBeauforScale];
-    return color;
-  }
+  const beauforScaleDays = document.querySelectorAll(".beauforScale");
 
-  const beauforScaleFirstDay = document.querySelector(".beauforScale1");
-  const beauforScaleFirstDayEl = document.createElement("p");
-  beauforScaleFirstDay.append(beauforScaleFirstDayEl);
-  beauforScaleFirstDayEl.textContent = calcBeauforScale(
-    weather.daily.windspeed_10m_max[0]
-  );
-  beauforScaleFirstDay.setAttribute(
-    "style",
-    `background: ${colorBeauforScale(
-      calcBeauforScale(weather.daily.windspeed_10m_max[0])
-    )}`
-  );
-
-  const beauforScaleSecondDay = document.querySelector(".beauforScale2");
-  const beauforScaleSecondDayEl = document.createElement("p");
-  beauforScaleSecondDay.append(beauforScaleSecondDayEl);
-  beauforScaleSecondDayEl.textContent = calcBeauforScale(
-    weather.daily.windspeed_10m_max[1]
-  );
-  beauforScaleSecondDay.setAttribute(
-    "style",
-    `background: ${colorBeauforScale(
-      calcBeauforScale(weather.daily.windspeed_10m_max[1])
-    )}`
-  );
-
-  const beauforScaleThirdDay = document.querySelector(".beauforScale3");
-  const beauforScaleThirdDayEl = document.createElement("p");
-  beauforScaleThirdDay.append(beauforScaleThirdDayEl);
-  beauforScaleThirdDayEl.textContent = calcBeauforScale(
-    weather.daily.windspeed_10m_max[2]
-  );
-  beauforScaleThirdDay.setAttribute(
-    "style",
-    `background: ${colorBeauforScale(
-      calcBeauforScale(weather.daily.windspeed_10m_max[2])
-    )}`
-  );
+  beauforScaleDays.forEach((bsd, i) => {
+    const beauforScaleDayEl = document.createElement("p");
+    bsd.append(beauforScaleDayEl);
+    beauforScaleDayEl.textContent = calcBeauforScale(
+      weather.daily.windspeed_10m_max[i]
+    );
+    bsd.setAttribute(
+      "style",
+      `background: ${
+        beauforScaleColor[calcBeauforScale(weather.daily.windspeed_10m_max[i])]
+      }`
+    );
+  });
 }
