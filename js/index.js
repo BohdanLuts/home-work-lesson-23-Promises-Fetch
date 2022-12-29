@@ -14,53 +14,28 @@ function renderWeather(weather) {
   console.log(weather.daily.windgusts_10m_max);
 
   // Input time in table
-
-  const dayFirst = document.querySelector(".day1");
-  const dayFirstEl = document.createElement("p");
-  dayFirst.append(dayFirstEl);
-  dayFirstEl.textContent = weather.daily.time[0];
-
-  const daySecond = document.querySelector(".day2");
-  const daySecondEl = document.createElement("p");
-  daySecond.append(daySecondEl);
-  daySecondEl.textContent = weather.daily.time[1];
-
-  const dayThird = document.querySelector(".day3");
-  const dayThirdEl = document.createElement("p");
-  dayThird.append(dayThirdEl);
-  dayThirdEl.textContent = weather.daily.time[2];
+  const weatherDay = document.querySelectorAll(".day");
+  weatherDay.forEach((wd, day) => {
+    const weatherDayEl = document.createElement("p");
+    wd.append(weatherDayEl);
+    weatherDayEl.textContent = weather.daily.time[day];
+  });
 
   // Input wind speed in table
-  const windSpeedFirstDay = document.querySelector(".windSpeed1");
-  const windSpeedFirstDayEl = document.createElement("p");
-  windSpeedFirstDay.append(windSpeedFirstDayEl);
-  windSpeedFirstDayEl.textContent = `${weather.daily.windspeed_10m_max[0]} км/год`;
-
-  const windSpeedSecondDay = document.querySelector(".windSpeed2");
-  const windSpeedSecondDayEl = document.createElement("p");
-  windSpeedSecondDay.append(windSpeedSecondDayEl);
-  windSpeedSecondDayEl.textContent = `${weather.daily.windspeed_10m_max[1]} км/год`;
-
-  const windSpeedThirdDay = document.querySelector(".windSpeed3");
-  const windSpeedThirdDayEl = document.createElement("p");
-  windSpeedThirdDay.append(windSpeedThirdDayEl);
-  windSpeedThirdDayEl.textContent = `${weather.daily.windspeed_10m_max[2]} км/год`;
+  const windSpeed = document.querySelectorAll(".windSpeed");
+  windSpeed.forEach((ws, speed) => {
+    const windSpeedEl = document.createElement("p");
+    ws.append(windSpeedEl);
+    windSpeedEl.textContent = `${weather.daily.windspeed_10m_max[speed]} км/год`;
+  });
 
   // Input wind gusts in table
-  const windGustsFirstDay = document.querySelector(".windGusts1");
-  const windGustsFirstDayEl = document.createElement("p");
-  windGustsFirstDay.append(windGustsFirstDayEl);
-  windGustsFirstDayEl.textContent = `${weather.daily.windgusts_10m_max[0]} км/год`;
-
-  const windGustsSecondDay = document.querySelector(".windGusts2");
-  const windGustsSecondDayEl = document.createElement("p");
-  windGustsSecondDay.append(windGustsSecondDayEl);
-  windGustsSecondDayEl.textContent = `${weather.daily.windgusts_10m_max[1]} км/год`;
-
-  const windGustsThirdDay = document.querySelector(".windGusts3");
-  const windGustsThirdDayEl = document.createElement("p");
-  windGustsThirdDay.append(windGustsThirdDayEl);
-  windGustsThirdDayEl.textContent = `${weather.daily.windgusts_10m_max[2]} км/год`;
+  const windGusts = document.querySelectorAll(".windGusts");
+  windGusts.forEach((wg, speed) => {
+    const windGustsEl = document.createElement("p");
+    wg.append(windGustsEl);
+    windGustsEl.textContent = `${weather.daily.windgusts_10m_max[speed]} км/год`;
+  });
 
   // Input Beaufor Scale in table
   function calcBeauforScale(windspeed) {
